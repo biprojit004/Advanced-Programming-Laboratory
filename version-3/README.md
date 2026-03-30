@@ -1,4 +1,4 @@
-# File Search Utility — Java Edition
+# File Search Utility — Java Edition(SOLID PRINCIPALS)
 
 ![Java](https://img.shields.io/badge/Java-11%2B-orange?style=flat-square&logo=java)
 ![SOLID](https://img.shields.io/badge/Design-SOLID%20Principles-blue?style=flat-square)
@@ -255,9 +255,6 @@ Search query: report
 | v2.0 | C | Modular separation into `gui`, `search`, and `utils` with header files |
 | v3.0 | **Java** | Full rewrite — SOLID principles, clean package structure, cross-platform |
 
----
 
-## Author
 
-**Biprojit**
-*Advanced Programming Laboratory*
+
