@@ -11,8 +11,10 @@ set CXX=g++
 set BIN=bin\FileSearch.exe
 
 set SRC=src\main.cpp ^
+        src\controller\SearchController.cpp ^
         src\gui\MainWindow.cpp ^
         src\gui\ResultsListView.cpp ^
+        src\model\SearchModel.cpp ^
         src\search\FileNameSearchStrategy.cpp ^
         src\search\ExtensionSearchStrategy.cpp ^
         src\search\ContentSearchStrategy.cpp ^

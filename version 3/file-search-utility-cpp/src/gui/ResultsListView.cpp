@@ -10,8 +10,7 @@ bool ResultsListView::create(HWND parent, HINSTANCE hInstance,
 {
     hList_ = CreateWindowExA(
         WS_EX_CLIENTEDGE, WC_LISTVIEWA, "",
-        WS_CHILD | WS_VISIBLE | LVS_REPORT |
-        LVS_FULLROWSELECT | LVS_SINGLESEL,
+        WS_CHILD | WS_VISIBLE | LVS_REPORT | LVS_SINGLESEL,
         x, y, width, height,
         parent, reinterpret_cast<HMENU>((LONG_PTR)controlId),
         hInstance, nullptr
@@ -65,12 +64,17 @@ void ResultsListView::populate(const std::vector<SearchResult>& results) {
         item.pszText  = const_cast<char*>(r.fileName.c_str());
         ListView_InsertItem(hList_, &item);
 
-        ListView_SetItemTextA(hList_, i, 1,
-            const_cast<char*>(r.sizeFormatted.c_str()));
-        ListView_SetItemTextA(hList_, i, 2,
-            const_cast<char*>(r.extension.empty() ? "(none)" : r.extension.c_str()));
-        ListView_SetItemTextA(hList_, i, 3,
-            const_cast<char*>(r.fullPath.c_str()));
+        auto setSubItem = [&](int subItem, const char* text) {
+            LVITEMA sub{};
+            sub.iSubItem = subItem;
+            sub.pszText = const_cast<char*>(text);
+            SendMessageA(hList_, LVM_SETITEMTEXTA, i,
+                         reinterpret_cast<LPARAM>(&sub));
+        };
+
+        setSubItem(1, r.sizeFormatted.c_str());
+        setSubItem(2, r.extension.empty() ? "(none)" : r.extension.c_str());
+        setSubItem(3, r.fullPath.c_str());
     }
 }
 

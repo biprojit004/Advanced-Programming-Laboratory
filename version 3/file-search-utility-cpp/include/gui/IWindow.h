@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../utils/Win32Compat.h"
 #include <windows.h>
 #include <string>
 
